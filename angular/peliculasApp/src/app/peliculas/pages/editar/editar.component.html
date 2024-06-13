@@ -1,0 +1,120 @@
+<form
+  (ngSubmit)="guardar()"
+  [formGroup]="formulario"
+  class="container"
+  autocomplete="off"
+>
+  <div class="mx-auto">
+    <!-- Identificador de la pelicula -->
+    <input id="id" name="id" type="hidden" value="-1" />
+
+    <!-- titulo. Es texto -->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="titulo" class="form-label">Titulo</label>
+
+        <!-- El campo titulo -->
+        <input
+          formControlName="titulo"
+          type="text"
+          class="form-control"
+          [readonly]="actualizando"
+        />
+        <span class="form-text text-danger" *ngIf="esCampoNoValido('titulo')">{{
+          mensajeErrorCampo("titulo")
+        }}</span>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="director" class="form-label">Director</label>
+        <input formControlName="director" class="form-control" />
+        <span
+          class="form-text text-danger"
+          *ngIf="esCampoNoValido('director')"
+          >{{ mensajeErrorCampo("director") }}</span
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 mb-1">
+        <label for="fechaEstreno" class="form-label">Fecha de estreno</label>
+        <input
+          formControlName="fechaEstreno"
+          class="form-control"
+          type="date"
+        />
+        <span class="form-text text-danger" *ngIf="esCampoNoValido('fecha')">{{
+          mensajeErrorCampo("fecha")
+        }}</span>
+      </div>
+
+      <div class="col-md-4 mb-1">
+        <label for="edad" class="form-label">Edad</label>
+        <input formControlName="edad" class="form-control" />
+        <span class="form-text text-danger" *ngIf="esCampoNoValido('edad')">{{
+          mensajeErrorCampo("edad")
+        }}</span>
+      </div>
+
+      <div class="col-md-4 mb-1">
+        <label for="duracion" class="form-label">Duración</label>
+        <input formControlName="duracion" class="form-control" />
+        <span
+          class="form-text text-danger"
+          *ngIf="esCampoNoValido('duracion')"
+          >{{ mensajeErrorCampo("duracion") }}</span
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-1">
+        <label for="reparto" class="form-label">Reparto</label>
+        <input formControlName="reparto" class="form-control" />
+        <span
+          class="form-text text-danger"
+          *ngIf="esCampoNoValido('reparto')"
+          >{{ mensajeErrorCampo("reparto") }}</span
+        >
+      </div>
+
+      <div class="col-md-6 mb-1">
+        <label for="genero" class="form-label">Géneros</label>
+        <select formControlName="genero" class="form-select">
+          <option value="">Selecciona una opción</option>
+          <option *ngFor="let genero of generos" [value]="genero.nombre">
+            {{ genero.nombre }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mb-1">
+        <label for="sinopsis" class="form-label">Sinopsis</label>
+        <input formControlName="sinopsis" class="form-control" />
+        <span
+          class="form-text text-danger"
+          *ngIf="esCampoNoValido('sinopsis')"
+          >{{ mensajeErrorCampo("sinopsis") }}</span
+        >
+      </div>
+    </div>
+  </div>
+</form>
+
+<hr />
+
+<!-- Botones de navegación -->
+<div class="row">
+  <span class="col-7"></span>
+  <button class="btn btn-primary col-2 m-3" routerLink="/peliculas/listado">
+    Volver
+  </button>
+
+  <!-- Desabilita el guardar si hay una operación en curso -->
+  <button
+    class="btn btn-warning col-2 m-3"
+    (click)="guardar()"
+    [disabled]="formulario.pending"
+  >
+    Guardar
+  </button>
+</div>

@@ -1,0 +1,63 @@
+
+<ion-header>
+  <app-header titulo="Carrito"></app-header>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-button class="custom-comprar" routerLink="/carta-domicilio" expand="full">
+    Comprar más
+    <ion-icon name="cart-outline" class="cart-icon ml-2"></ion-icon>
+  </ion-button>
+  <ion-list>
+    <ion-item *ngFor="let item of productosEnCarrito">
+      <ion-thumbnail slot="start">
+        <img
+          [src]="item.producto.imagen"
+          alt="Imagen de {{ item.producto.nombre }}"
+        />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ item.producto.nombre }}</h2>
+        <p>{{ item.producto.precio }} €</p>
+      </ion-label>
+      <ion-button
+        fill="clear"
+        color="dark"
+        class="boton-masmenos"
+        (click)="reducirCantidad(item.producto)"
+        >-</ion-button
+      >
+      <p class="cantidad">{{ item.cantidad }}</p>
+      <ion-button
+        fill="clear"
+        color="dark"
+        class="boton-masmenos"
+        (click)="aumentarCantidad(item.producto)"
+        >+</ion-button
+      >
+      <ion-button
+        fill="clear"
+        color="danger"
+        class="boton-borrar"
+        (click)="eliminarProducto(item.producto)"
+      >
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Total:</ion-label>
+      <ion-label>{{ totalPrecio }} €</ion-label>
+    </ion-item>
+  
+  
+    <ion-button class="custom-confirm" (click)="validarCarrito()" expand="full">
+      Tramitar pedido
+    </ion-button>
+  </ion-list>
+
+
+</ion-content>
+

@@ -1,0 +1,78 @@
+INFO:2023-11-22 09:01:55:Usuario creado: pedrowe
+ERROR:2023-11-22 09:03:00:Usuario NO creado: pedrowe
+ERROR:2023-11-22 09:03:30:Usuario NO creado: pedrowe
+INFO:2023-11-22 09:03:56:Usuario creado: angel213
+ERROR:2023-11-22 09:06:10:Usuario NO creado: angel213
+INFO:2023-11-22 09:26:50:Usuario creado: angel3213
+DEBUG:2023-11-22 09:31:18:Acceso correcto
+INFO:2023-11-22 09:31:18:Acceso con username correcto
+ERROR:2023-11-22 10:01:54:Usuario NO creado: angel
+ERROR:2023-11-22 10:02:26:Usuario NO creado: angel213das
+INFO:2023-11-22 10:03:31:Usuario creado: angel213dassad
+ERROR:2023-11-22 10:04:07:Usuario NO creado: angel
+ERROR:2023-11-22 10:13:10:Usuario NO creado: angelcliente
+INFO:2023-11-22 10:14:27:Usuario creado: angelmsam
+DEBUG:2023-11-22 10:14:39:Acceso correcto
+INFO:2023-11-22 10:14:39:Acceso con username correcto
+INFO:2023-11-22 10:19:32:Usuario creado: angel3425
+INFO:2023-11-22 10:20:57:Usuario creado: angel3425421
+INFO:2023-11-22 10:23:56:Usuario creado: angel111
+ERROR:2023-11-22 10:24:13:Usuario NO creado: angel111
+DEBUG:2023-11-22 10:30:10:Acceso correcto
+INFO:2023-11-22 10:30:10:Acceso con username correcto
+DEBUG:2023-11-22 10:54:05:Acceso correcto
+INFO:2023-11-22 10:54:05:Acceso con username correcto
+DEBUG:2023-11-22 10:54:09:Acceso correcto
+INFO:2023-11-22 10:54:09:Acceso con username correcto
+DEBUG:2023-11-22 10:55:17:Acceso correcto
+INFO:2023-11-22 10:55:17:Acceso con username correcto
+DEBUG:2023-11-22 10:55:20:Acceso correcto
+INFO:2023-11-22 10:55:20:Acceso con username correcto
+DEBUG:2023-11-22 10:56:34:Acceso correcto
+INFO:2023-11-22 10:56:34:Acceso con username correcto
+DEBUG:2023-11-22 10:56:41:Acceso correcto
+INFO:2023-11-22 10:56:41:Acceso con username correcto
+DEBUG:2023-11-22 10:57:13:Acceso correcto
+INFO:2023-11-22 10:57:13:Acceso con username correcto
+DEBUG:2023-11-22 10:58:01:Acceso correcto
+INFO:2023-11-22 10:58:01:Acceso con username correcto
+DEBUG:2023-11-22 11:05:31:Acceso correcto
+INFO:2023-11-22 11:05:31:Acceso con código correcto
+ERROR:2023-11-22 11:12:50:Viaje NO creado
+ERROR:2023-11-22 11:13:09:Viaje NO creado
+ERROR:2023-11-22 11:13:42:Viaje NO creado
+ERROR:2023-11-22 11:14:59:Viaje NO creado
+ERROR:2023-11-22 11:15:06:Viaje NO creado
+ERROR:2023-11-22 11:15:25:Viaje NO creado
+ERROR:2023-11-22 11:15:43:Viaje NO creado
+ERROR:2023-11-22 11:18:13:Viaje NO creado
+ERROR:2023-11-22 11:18:47:Viaje NO creado
+ERROR:2023-11-22 11:18:47:Viaje NO creado
+ERROR:2023-11-22 11:20:08:Viaje NO creado
+ERROR:2023-11-22 11:20:48:Viaje NO creado
+ERROR:2023-11-22 11:21:01:Viaje NO creado
+ERROR:2023-11-22 11:25:46:Viaje NO creado
+ERROR:2023-11-22 11:26:04:Viaje NO creado
+DEBUG:2023-11-22 11:27:03:Acceso correcto
+INFO:2023-11-22 11:27:03:Acceso con código correcto
+DEBUG:2023-11-22 19:14:15:Acceso correcto
+INFO:2023-11-22 19:14:15:Acceso con código correcto
+DEBUG:2023-11-22 19:14:18:Acceso correcto
+INFO:2023-11-22 19:14:18:Acceso con código correcto
+DEBUG:2023-11-22 19:14:51:Acceso correcto
+INFO:2023-11-22 19:14:51:Acceso con código correcto
+DEBUG:2023-11-22 19:15:40:Acceso correcto
+INFO:2023-11-22 19:15:40:Acceso con código correcto
+DEBUG:2023-11-22 19:15:52:Acceso correcto
+INFO:2023-11-22 19:15:52:Acceso con código correcto
+DEBUG:2023-11-22 20:33:48:Acceso correcto
+INFO:2023-11-22 20:33:48:Acceso con código correcto
+INFO:2023-11-22 21:01:41:Usuario creado: angelc
+ERROR:2023-11-22 21:05:21:Contratación viaje - cliente guardada NO creada
+ERROR:2023-11-22 21:05:28:Contratación viaje - cliente guardada NO creada
+ERROR:2023-11-22 21:05:58:Contratación viaje - cliente guardada NO creada
+ERROR:2023-11-22 21:06:08:Contratación viaje - cliente guardada NO creada
+ERROR:2023-11-22 21:06:23:Contratación viaje - cliente guardada NO creada
+ERROR:2023-11-22 21:07:43:Contratación viaje - cliente guardada NO creada
+ERROR:2023-11-22 21:09:09:Contratación viaje - cliente guardada NO creada
+ERROR:2023-11-22 21:14:35:Contratación viaje - cliente guardada NO creada

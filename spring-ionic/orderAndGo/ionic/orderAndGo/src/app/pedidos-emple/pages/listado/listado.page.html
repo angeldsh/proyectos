@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Pedidos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button (click)="actualizarPedidos()" expand="block" color="light"
+  >Actualizar Pedidos</ion-button
+>
+  <app-tabla [pedidos]="pedidos" [detallesPedidos]="detallesPedidos"></app-tabla>
+</ion-content>
+

@@ -1,0 +1,15 @@
+DEBUG:2023-11-21 09:52:09:Acceso correcto
+INFO:2023-11-21 09:52:09:Acceso con username correcto
+INFO:2023-11-21 10:01:05:Usuario creado: angel
+INFO:2023-11-21 10:34:29:Usuario creado: angel2
+ERROR:2023-11-21 10:35:10:Usuario NO creado: angel2
+DEBUG:2023-11-21 10:35:36:Acceso correcto
+INFO:2023-11-21 10:35:36:Acceso con username correcto
+ERROR:2023-11-21 12:14:33:Usuario NO creado: angel2
+ERROR:2023-11-21 12:14:59:Usuario NO creado: angel2
+INFO:2023-11-21 12:15:14:Usuario creado: angel2
+INFO:2023-11-21 12:18:43:Usuario creado: ramon
+INFO:2023-11-21 12:33:37:Usuario creado: angel213
+ERROR:2023-11-21 12:34:37:Usuario NO creado: angel213
+ERROR:2023-11-21 12:34:56:Usuario NO creado: angel213
+ERROR:2023-11-21 12:35:03:Usuario NO creado: angel213

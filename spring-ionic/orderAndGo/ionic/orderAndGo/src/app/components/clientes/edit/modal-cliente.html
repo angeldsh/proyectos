@@ -1,0 +1,184 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ cliente ? 'Editar cliente' : 'Agregar cliente' }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <form [formGroup]="clienteForm" (ngSubmit)="guardarCambios()">
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input
+              label="Teléfono"
+              label-placement="floating"
+              formControlName="telefono"
+              type="tel"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="clienteForm.get('telefono')?.hasError('required') && clienteForm.get('telefono')?.touched"
+          >
+            Teléfono es obligatorio.
+          </ion-text>
+          <ion-text
+            color="danger"
+            *ngIf="clienteForm.get('telefono')?.hasError('telefonoInvalido') && clienteForm.get('telefono')?.touched"
+          >
+            Teléfono no es válido.
+          </ion-text>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input
+              label="NIF"
+              label-placement="floating"
+              formControlName="nif"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="clienteForm.get('nif')?.hasError('required') && clienteForm.get('nif')?.touched"
+          >
+            NIF es obligatorio.
+          </ion-text>
+          <ion-text
+            color="danger"
+            *ngIf="clienteForm.get('nif')?.hasError('nifInvalido') && clienteForm.get('nif')?.touched"
+          >
+            NIF no es válido.
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input
+              label="Nombre"
+              label-placement="floating"
+              formControlName="nombre"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="clienteForm.get('nombre')?.hasError('required') && clienteForm.get('nombre')?.touched"
+          >
+            Nombre es obligatorio.
+          </ion-text>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input
+              label="Apellido"
+              label-placement="floating"
+              formControlName="apellidos"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="clienteForm.get('apellidos')?.hasError('required') && clienteForm.get('apellidos')?.touched"
+          >
+            Apellido es obligatorio.
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input
+              label="Nombre de usuario"
+              label-placement="floating"
+              formControlName="username"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="clienteForm.get('username')?.hasError('required') && clienteForm.get('username')?.touched"
+          >
+            Nombre de usuario es obligatorio.
+          </ion-text>
+          <ion-text
+            color="danger"
+            *ngIf="clienteForm.get('username')?.hasError('usernameExiste') && clienteForm.get('username')?.touched"
+          >
+            El nombre de usuario ya existe.
+          </ion-text>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input
+              label="Contraseña"
+              label-placement="floating"
+              formControlName="password"
+              type="password"
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="clienteForm.get('password')?.hasError('required') && clienteForm.get('password')?.touched"
+          >
+            Contraseña es obligatoria.
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-input
+              label="Correo electrónico"
+              label-placement="floating"
+              formControlName="email"
+              type="email"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="clienteForm.get('email')?.hasError('required') && clienteForm.get('email')?.touched"
+          >
+            Correo electrónico es obligatorio.
+          </ion-text>
+          <ion-text
+            color="danger"
+            *ngIf="clienteForm.get('email')?.hasError('email') && clienteForm.get('email')?.touched"
+          >
+            Correo electrónico no es válido.
+          </ion-text>
+          <ion-text
+            color="danger"
+            *ngIf="clienteForm.get('email')?.hasError('emailExiste') && clienteForm.get('email')?.touched"
+          >
+            El correo electrónico ya existe.
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-button
+            type="submit"
+            expand="block"
+            [disabled]="clienteForm.invalid"
+          >
+            {{ cliente ? 'Guardar cambios' : 'Agregar cliente' }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+</ion-content>

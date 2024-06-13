@@ -1,0 +1,79 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header routerLink="/welcome">
+            <img
+              src="assets/icon/logo.png"
+              alt="Logo"
+              style="width: 40px; height: 40px; margin-right: 10px"
+            />
+            Order & Go
+          </ion-list-header>
+          <ion-note></ion-note>
+
+          <ion-menu-toggle
+            auto-hide="false"
+            *ngFor="let p of appPages; let i = index"
+          >
+            <ion-item
+              routerDirection="root"
+              [routerLink]="[p.url]"
+              lines="none"
+              detail="false"
+              routerLinkActive="selected"
+              class="custome-menu"
+            >
+              <ion-icon
+                aria-hidden="true"
+                slot="start"
+                [ios]="p.icon + '-outline'"
+                [md]="p.icon + '-sharp'"
+              ></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-item
+            class="ion-margin-top custom-log-out"
+            *ngIf="autenticacionService.isSesionIniciada() | async"
+            (click)="logout()"
+            routerDirection="root"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon
+              name="log-out-outline"
+              slot="start"
+              ios="log-out-outline"
+              md="log-out-sharp"
+            ></ion-icon>
+            <ion-label>Cerrar sesión</ion-label>
+          </ion-item>
+
+          <ion-item
+            class="ion-margin-top custom-log-in"
+            *ngIf="
+              !(autenticacionService.isSesionIniciada() | async) &&
+              !isPedidoMesa()
+            "
+            routerDirection="root"
+            routerLink="/auth/login"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon
+              name="log-in-outline"
+              slot="start"
+              ios="log-in-outline"
+              md="log-in-sharp"
+            ></ion-icon>
+            <ion-label>Log in</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

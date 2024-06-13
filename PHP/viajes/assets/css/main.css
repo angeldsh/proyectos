@@ -1,0 +1,32 @@
+.bg-navbar{
+    background-color: lightblue;
+}
+.bg-footer{
+    background-color: lightblue;
+}
+
+.btn-save {
+    background-color: #1C3544;
+    color:#ebf2fb;
+}
+.btn-save:hover {
+    background-color:lightblue;
+    color:black;
+}
+.btn-new{
+    background-color:lightblue;
+
+}
+.btn-new:hover{
+    background-color: palevioletred;
+    color:black;
+}
+#fotoGaleria {
+    height: 200px;
+    width: 100%;
+    background-size: cover;
+}
+#fotoGaleria:hover {
+    opacity: 0.6;
+    transition: opacity 0.3s ease-in;
+}

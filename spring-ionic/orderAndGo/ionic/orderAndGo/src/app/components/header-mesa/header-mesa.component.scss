@@ -1,0 +1,15 @@
+.badge {
+  position: absolute;
+  background-color: rgba(106, 70, 7, 0.753);
+  top: -8px;
+  right: -8px;
+  border-radius: 50%;
+  padding: 2px;
+  font-size: 12px;
+}
+
+.custom-button {
+  --background: rgba(255, 178, 44, 0.753); 
+  --border-color: transparent; 
+  --color: #000; 
+}

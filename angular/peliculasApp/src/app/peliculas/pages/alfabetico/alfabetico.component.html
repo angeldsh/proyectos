@@ -1,0 +1,22 @@
+<div class="row">
+  <app-letras
+    (letraSeleccionada)="cargarPeliculasPorLetra($event)"
+  ></app-letras>
+  <div class="col mb-1">
+    <button
+      type="button"
+      class="btn btn-primary text-white mb-1 rounded-circle"
+      routerLink="../agregar"
+      style="float: right; margin-right: 5%"
+    >
+      <i class="bi bi-plus-lg"></i>
+    </button>
+  </div>
+</div>
+<!-- 
+    Tabla con los resultados.
+ -->
+<app-tabla-peliculas
+  [peliculas]="peliculas"
+  (onBorrar)="borrarPelicula($event)"
+></app-tabla-peliculas>

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title
+      >{{ categoria ? 'Editar categoría' : 'Agregar categoría' }}</ion-title
+    >
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <form [formGroup]="categoriaForm" (ngSubmit)="guardarCambios()">
+          <ion-item>
+            <ion-input
+              label="Nombre"
+              label-placement="floating"
+              formControlName="nombre"
+              required
+            ></ion-input>
+            <ion-text
+              color="danger"
+              *ngIf="categoriaForm.get('nombre')?.hasError('required') && categoriaForm.get('nombre')?.touched"
+            >
+              La categoria es obligatoria.
+            </ion-text>
+          </ion-item>
+
+          <ion-button
+            type="submit"
+            expand="block"
+            [disabled]="categoriaForm.invalid"
+          >
+            {{ categoria ? 'Guardar cambios' : 'Agregar categoría' }}
+          </ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

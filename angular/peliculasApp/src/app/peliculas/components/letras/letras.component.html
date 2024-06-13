@@ -1,0 +1,13 @@
+<div class="container mt-3 mb-3">
+  <div class="row text-center">
+    <div class="btn-group" id="letrasMenu">
+      <button
+        *ngFor="let letra of letras"
+        class="btn btn-light border letra"
+        (click)="onSeleccionarLetra(letra)"
+      >
+        {{ letra }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ingresar código de mesa</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="mt-2">
+    <ion-item>
+      <ion-input
+        label="Código de Mesa"
+        label-placement="floating"
+        type="text"
+        [(ngModel)]="codigoMesa"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" class="custom-button" (click)="guardarCodigo()"
+      >Guardar</ion-button
+    >
+  </div>
+</ion-content>

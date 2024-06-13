@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title
+      >{{ producto ? 'Editar producto' : 'Agregar producto' }}</ion-title
+    >
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <form [formGroup]="productoForm" (ngSubmit)="guardarCambios()">
+          <ion-row>
+            <ion-col size="6">
+              <ion-item>
+                <ion-input
+                  label="Nombre"
+                  labelPlacement="floating"
+                  formControlName="nombre"
+                  required
+                ></ion-input>
+              </ion-item>
+              <ion-text
+                color="danger"
+                *ngIf="productoForm.get('nombre')?.hasError('required') && productoForm.get('nombre')?.touched"
+              >
+                Nombre es obligatorio.
+              </ion-text>
+            </ion-col>
+            <ion-col size="6">
+              <ion-item>
+                <ion-input
+                  label="Precio"
+                  labelPlacement="floating"
+                  formControlName="precio"
+                  type="number"
+                  required
+                ></ion-input>
+              </ion-item>
+              <ion-text
+                color="danger"
+                *ngIf="productoForm.get('precio')?.hasError('required') && productoForm.get('precio')?.touched"
+              >
+                El precio es obligatorio.
+              </ion-text>
+              <ion-text
+                color="danger"
+                *ngIf="productoForm.get('precio')?.hasError('precioInvalido') && productoForm.get('precio')?.touched"
+              >
+                El precio no es válido.
+              </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-item>
+            <ion-select label="Categoría" label-placement="floating" formControlName="categoria" interface="popover" required>
+              <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">
+                {{ categoria.nombre }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              label="Descripción"
+              labelPlacement="floating"
+              formControlName="descripcion"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="productoForm.get('descripcion')?.hasError('required') && productoForm.get('descripcion')?.touched"
+          >
+            Descripción es obligatoria.
+          </ion-text>
+
+          <ion-item>
+            <ion-label position="block">Imagen</ion-label>
+            <input type="file" (change)="onFileChange($event)" />
+          </ion-item>
+          <ion-img
+            *ngIf="imagenURL"
+            [src]="imagenURL"
+            alt="Vista previa de la imagen"
+            class="w-64 h-44 mx-auto my-auto"
+          ></ion-img>
+
+          <ion-button
+            type="submit"
+            expand="block"
+            [disabled]="productoForm.invalid"
+          >
+            {{ producto ? 'Guardar cambios' : 'Agregar producto' }}
+          </ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pagar con PayPal</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <div>Precio total: {{ totalPrecio }} €</div>
+
+    <div class="ion-text-center ion-margin-top">
+      <app-paypal-button
+        [amount]="totalPrecio"
+        (paymentSuccess)="onPaymentSuccess()"
+      ></app-paypal-button>
+    </div>
+  </div>
+</ion-content>

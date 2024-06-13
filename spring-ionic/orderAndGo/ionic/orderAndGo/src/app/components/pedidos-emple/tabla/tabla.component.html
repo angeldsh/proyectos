@@ -1,0 +1,96 @@
+<ion-content>
+  <ion-button
+  (click)="toggleMostrarCompletados()"
+  expand="block"
+  class="custom-button"
+>
+  {{ mostrarCompletados ? "Ocultar completados" : "Mostrar completados" }}
+</ion-button>
+  <ng-container
+    *ngFor="let estado of ['pendiente', 'preparando', 'enviado', 'completado']">
+    <ng-container
+      *ngIf="
+        (estado !== 'completado' || mostrarCompletados) &&
+        pedidosPorEstado(estado).length > 0
+      ">
+      <ion-card>
+        <ion-card-header class="custom-color">
+          <ion-card-title class="font-bold uppercase text-center">{{
+            estado
+          }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ng-container *ngFor="let pedido of pedidosPorEstado(estado)">
+            <ion-card
+              class="pedido-card"
+              *ngIf="estado !== 'completado' || mostrarCompletados"
+            >
+              <ion-card-header [ngClass]="getEstadoClase(pedido.estado)">
+                <ion-card-subtitle class="text-white">
+                  Tipo de pedido: {{ pedido.tipo }}
+                </ion-card-subtitle>
+                <ion-card-title>
+                  Hora de pedido: {{ pedido.fecha | date : "HH:mm" }}, día
+                  {{ pedido.fecha | date : "dd/MM" }}
+                  <ion-spinner
+                    *ngIf="
+                      pedido.estado !== 'completado' &&
+                      pedido.estado !== 'pendiente'
+                    "
+                    name="dots"
+                    color="light"
+                    size="large"
+                  ></ion-spinner>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-item
+                  *ngIf="pedido.direccion && pedido.direccion.direccion"
+                >
+                  <ion-label>
+                    Dirección de envío: {{ pedido.direccion.direccion }}
+                  </ion-label>
+                </ion-item>
+                <ion-item *ngIf="pedido.ticket && pedido.ticket.mesa">
+                  <ion-label> Mesa: {{ pedido.ticket.mesa.numero }} </ion-label>
+                </ion-item>
+                <ion-list
+                  *ngIf="pedido.id !== null && detallesPedidos[pedido.id]"
+                >
+                  <ion-item *ngFor="let detalle of detallesPedidos[pedido.id]">
+                    <ion-label>
+                      {{ detalle.producto.nombre }} &nbsp;&nbsp;x &nbsp;
+                      {{ detalle.cantidad }} ud &nbsp;-&nbsp;&nbsp;
+                      {{ detalle.precio * detalle.cantidad }} €
+                    </ion-label>
+                  </ion-item>
+                </ion-list>
+                <ion-item>
+                  <ion-select
+                    label="Actualizar estado:"
+                    [(ngModel)]="pedido.estado"
+                    interface="popover"
+                    (ionChange)="actualizarEstado(pedido)"
+                  >
+                    <ion-select-option value="pendiente"
+                      >Pendiente</ion-select-option
+                    >
+                    <ion-select-option value="preparando"
+                      >Preparando</ion-select-option
+                    >
+                    <ion-select-option value="enviado"
+                      >Enviado</ion-select-option
+                    >
+                    <ion-select-option value="completado"
+                      >Completado</ion-select-option
+                    >
+                  </ion-select>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ng-container>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </ng-container>
+</ion-content>

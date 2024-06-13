@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Confirmar pedido</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of productosEnCarrito">
+      {{ item.cantidad }} - {{ item.producto.nombre }} - {{ item.producto.precio }} €
+    </ion-item>
+  </ion-list>
+  <ion-item>
+    <ion-label>Total</ion-label>
+    <ion-label>{{ total }} €</ion-label>
+  </ion-item>
+  <ion-button expand="block" (click)="confirmarPedido()" class="custom-confirm"
+    >Confirmar pedido</ion-button
+  >
+  <ion-button expand="block" (click)="cerrarModal()" class="custom-cancel"
+    >Cancelar</ion-button
+  >
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ mesa ? 'Editar mesa' : 'Agregar mesa' }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <form [formGroup]="mesaForm" (ngSubmit)="guardarCambios()">
+          <ion-item>
+            <ion-input
+              label="Número de Mesa"
+              label-placement="floating"
+              formControlName="numero"
+              type="number"
+              required
+            ></ion-input>
+            <ion-text
+              color="danger"
+              *ngIf="mesaForm.get('numero')?.hasError('required') && mesaForm.get('numero')?.touched"
+            >
+              El número de mesa es obligatorio.
+            </ion-text>
+          </ion-item>
+
+          <ion-button
+            type="submit"
+            expand="block"
+            [disabled]="mesaForm.invalid"
+          >
+            {{ mesa ? 'Guardar cambios' : 'Agregar mesa' }}
+          </ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

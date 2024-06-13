@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>{{ titulo }}</ion-title>
+    <ion-label></ion-label>
+
+    <ion-button
+      slot="end"
+      class="mr-3 custom-button"
+      (click)="abrirModalTramitarPedido()"
+    >
+      <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
+      <ion-badge *ngIf="cantidadEnCarrito > 0" class="badge">{{
+        cantidadEnCarrito
+      }}</ion-badge>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>

@@ -1,0 +1,12 @@
+DEBUG:2023-11-08 09:38:06:Acceso correcto
+INFO:2023-11-08 09:38:06:Acceso con username correcto
+DEBUG:2023-11-08 09:38:35:Acceso correcto
+INFO:2023-11-08 09:38:35:Acceso con username correcto
+DEBUG:2023-11-08 09:40:43:Acceso correcto
+INFO:2023-11-08 09:40:43:Acceso con username correcto
+DEBUG:2023-11-08 09:40:46:Acceso correcto
+INFO:2023-11-08 09:40:46:Acceso con username correcto
+ERROR:2023-11-08 09:41:00:Usuario NO creado: angelhd23fsda
+INFO:2023-11-08 10:28:33:Usuario creado: pedro
+DEBUG:2023-11-08 10:34:07:Acceso correcto
+INFO:2023-11-08 10:34:07:Acceso con username correcto

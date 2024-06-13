@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleEditMode()">
+        <ion-icon slot="icon-only" name="{{ editMode ? 'checkmark' : 'create' }}"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="cliente">
+    <ion-card-header>
+      <ion-card-title *ngIf="!editMode">{{ cliente.usuario.nombre }} {{ cliente.usuario.apellidos }}</ion-card-title>
+      <ion-card-title *ngIf="editMode">
+        <ion-input aria-label="nombre" [(ngModel)]="cliente.usuario.nombre" placeholder="Nombre"></ion-input>
+        <ion-input aria-label="apellido" [(ngModel)]="cliente.usuario.apellidos" placeholder="Apellidos"></ion-input>
+      </ion-card-title>
+      <ion-card-subtitle>{{ cliente.usuario.email }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-text slot="start">Nombre de usuario:</ion-text>
+          <ion-note slot="end">{{ cliente.usuario.username }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-text slot="start">NIF:</ion-text>
+          <ion-note slot="end" *ngIf="!editMode">{{ cliente.nif }}</ion-note>
+          <ion-input slot="end" class="ion-text-end" aria-label="nif" slot="end" *ngIf="editMode" [(ngModel)]="cliente.nif" placeholder="NIF" (ngModelChange)="validarNif()"></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="nifInvalido && editMode">NIF inválido.</ion-text>
+
+        <ion-item>
+          <ion-text slot="start">Teléfono:</ion-text>
+          <ion-input aria-label="telefono" class="ion-text-end" slot="end" *ngIf="editMode" [(ngModel)]="cliente.telefono" (ngModelChange)="validarTelefono()" placeholder="Ingrese el teléfono"></ion-input>
+          <ion-note slot="end" *ngIf="!editMode">{{ cliente.telefono }}</ion-note>
+        </ion-item>
+        <ion-text color="danger" *ngIf="telefonoInvalido && editMode">Teléfono inválido.</ion-text>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="showAddAddressForm">
+    <ion-card-header>
+      <ion-card-title>Agregar dirección</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-input aria-label="direccion" placeholder="Ingrese la dirección" [(ngModel)]="newAddress.direccion" required></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="!newAddress.direccion">La dirección es obligatoria</ion-text>
+        <ion-item>
+          <ion-input aria-label="cp" placeholder="Ingrese el código postal" [(ngModel)]="newAddress.cp" (ngModelChange)="validarCpNuevo()" required></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="!newAddress.cp">Código Postal obligatorio.</ion-text>
+        <ion-text color="danger" *ngIf="newAddress.cp && cpInvalidoNew">Código Postal no válido.</ion-text>
+      </ion-list>
+      <ion-button expand="block" class="custom-confirm" (click)="agregarDireccion()">Agregar Dirección</ion-button>
+      <ion-button expand="block" color="danger" (click)="toggleAddAddressForm()">Cancelar</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-card-title>Direcciones</ion-card-title>
+        <ion-buttons slot="end">
+          <ion-button color="primary" (click)="toggleAddAddressForm()">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-card-header>
+    <ion-list *ngIf="direcciones.length > 0">
+      <ion-card *ngFor="let direccion of direcciones">
+        <ion-card-header *ngIf="!editMode" class="bg-sky-50 dark:bg-transparent">
+          <ion-card-title>{{ direccion.direccion }}</ion-card-title>
+          <ion-card-subtitle>{{ direccion.cp }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content *ngIf="editMode">
+          <ion-item>
+            <ion-input aria-label="direccion" placeholder="Dirección" [(ngModel)]="direccion.direccion"></ion-input>
+          </ion-item>
+          <ion-text color="danger" *ngIf="!direccion.direccion">La dirección es obligatoria.</ion-text>
+          <ion-item>
+            <ion-input aria-label="cp" placeholder="Código Postal" [(ngModel)]="direccion.cp" (ngModelChange)="validarCp(direccion)"></ion-input>
+            <ion-buttons slot="end">
+              <ion-button color="danger" (click)="eliminarDireccion(direccion)">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+          <ion-text color="danger" *ngIf="!direccion.cp">Código Postal obligatorio.</ion-text>
+          <ion-text color="danger" *ngIf="direccion.cp && !direccion.cpValido">Código Postal no válido.</ion-text>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </ion-card>
+
+  <ion-spinner *ngIf="!cliente"></ion-spinner>
+</ion-content>

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Seleccionar dirección</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let direccion of direcciones">
+      <ion-label>{{ direccion.direccion }}</ion-label>
+      <ion-button
+        slot="end"
+        class="custom-select"
+        (click)="seleccionarDireccion(direccion)"
+        >Seleccionar</ion-button
+      >
+    </ion-item>
+  </ion-list>
+
+  <ion-card *ngIf="mostrarFormulario" class="ion-padding">
+    <ion-item>
+      <ion-input
+        label="Dirección"
+        label-placement="floating"
+        [(ngModel)]="nuevaDireccion.direccion"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="!nuevaDireccion.direccion"
+      >La dirección es obligatoria</ion-text
+    >
+    <ion-item>
+      <ion-input
+        label="Código Postal"
+        label-placement="floating"
+        [(ngModel)]="nuevaDireccion.cp"
+        (ngModelChange)="validarCp()"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="!cpValido"
+      >Código Postal no válido</ion-text
+    >
+
+    <ion-button
+      expand="block"
+      class="custom-confirm"
+      (click)="agregarDireccion()"
+      >Guardar dirección</ion-button
+    >
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-button
+    class="custom-add"
+    expand="full"
+    (click)="toggleAgregarDireccion()"
+  >
+    {{ mostrarFormulario ? 'Cancelar' : 'Agregar Dirección' }}
+  </ion-button>
+</ion-footer>

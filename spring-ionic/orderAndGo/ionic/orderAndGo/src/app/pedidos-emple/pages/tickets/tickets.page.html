@@ -1,0 +1,21 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Crear nuevo ticket</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-item>
+      <ion-input
+        label="Número de Mesa"
+        label-placement="floating"
+        type="number"
+        [(ngModel)]="mesaNum"
+        placeholder="Ingrese el número de la mesa"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="custom-button" (click)="crearTicket()"
+      >Crear ticket</ion-button
+    >
+  </ion-card-content>
+</ion-card>

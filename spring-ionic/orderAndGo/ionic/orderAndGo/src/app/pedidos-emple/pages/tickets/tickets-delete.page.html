@@ -1,0 +1,19 @@
+<ion-card *ngFor="let ticket of tickets">
+  <ion-card-header>
+    <ion-card-title>Mesa {{ ticket.mesa.numero }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-item>
+      <ion-label>Ticket</ion-label>
+      <ion-text>{{ ticket.codigoAcceso }}</ion-text>
+    </ion-item>
+    <ion-button
+      expand="block"
+      color="danger"
+      (click)="cerrarTicket(ticket.mesa.numero)"
+    >
+      Cerrar ticket
+    </ion-button>
+  </ion-card-content>
+</ion-card>

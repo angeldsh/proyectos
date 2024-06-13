@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="d-flex justify-content-center mt-3">
+    <div class="col-4">
+      <!-- Ajusta el tamaño según tus necesidades -->
+      <app-select
+        [generos]="generos"
+        (generoSeleccionado)="cargarPeliculasPorGenero($event)"
+      ></app-select>
+    </div>
+  </div>
+  <div class="col mb-1">
+    <button
+      type="button"
+      class="btn btn-primary text-white mb-1 rounded-circle"
+      routerLink="../agregar"
+      style="float: right; margin-right: 5%"
+    >
+      <i class="bi bi-plus-lg"></i>
+    </button>
+  </div>
+  <app-tabla-peliculas
+    [peliculas]="peliculas"
+    (onBorrar)="borrarPelicula($event)"
+  ></app-tabla-peliculas>
+</div>

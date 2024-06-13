@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mis pedidos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button (click)="actualizarPedidos()" expand="block" color="light">
+    Actualizar Pedidos
+  </ion-button>
+  
+  <ion-button (click)="toggleMostrarCompletados()" expand="block" class="custom-button">
+    {{ mostrarCompletados ? 'Ocultar Completados' : 'Mostrar Completados' }}
+  </ion-button>
+
+  <ion-card *ngFor="let pedido of pedidos" [hidden]="!mostrarCompletados && pedido.estado === 'completado'" class="pedido-card">
+    <ion-card-header [ngClass]="getEstadoClase(pedido.estado)">
+      <ion-card-subtitle class="text-white">
+        Hora de pedido: {{ pedido.fecha | date: 'HH:mm' }} del día {{ pedido.fecha | date: 'dd/MM' }}
+      </ion-card-subtitle>
+      <ion-card-title class="text-white">Estado: {{ pedido.estado }}</ion-card-title>
+      <ion-spinner *ngIf="pedido.estado !== 'completado' && pedido.estado !== 'pendiente'" name="dots" color="light" size="large"></ion-spinner>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item *ngIf="pedido.direccion && pedido.direccion.direccion">
+        <ion-label>
+          Dirección de envío: {{ pedido.direccion.direccion }}
+        </ion-label>
+      </ion-item>
+
+      <ion-list *ngIf="pedido.id !== null && detallesPedidos[pedido.id]">
+        <ion-item *ngFor="let detalle of detallesPedidos[pedido.id]">
+          <ion-label>
+            {{ detalle.producto.nombre }} &nbsp;&nbsp;x &nbsp; {{ detalle.cantidad }} ud &nbsp;-&nbsp;&nbsp; {{ detalle.precio * detalle.cantidad }} €
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="d-flex justify-content-center mt-3">
+    <div class="col-4">
+      <!-- Ajusta el tamaño según tus necesidades -->
+      <!-- Filtro de búsquedas -->
+      <app-filtro-busqueda
+        placeholder="Introduce el término de búsqueda"
+        (onBusquedaEjecutada)="buscar($event)"
+      >
+      </app-filtro-busqueda>
+    </div>
+  </div>
+
+  <div class="col mb-1">
+    <button
+      type="button"
+      class="btn btn-primary text-white mb-1 rounded-circle"
+      routerLink="../agregar"
+      style="float: right; margin-right: 5%"
+    >
+      <i class="bi bi-plus-lg"></i>
+    </button>
+    <button
+      type="button"
+      class="btn btn-lg mb-1"
+      style="float: right; margin-right: 2%"
+      (click)="cargarPeliculasDesc()"
+    >
+      <i class="bi bi-sort-alpha-up"></i>
+    </button>
+    <button
+      type="button"
+      class="btn btn-lg mb-1"
+      style="float: right"
+      (click)="cargarPeliculas()"
+    >
+      <i class="bi bi-sort-alpha-down"></i>
+    </button>
+  </div>
+</div>
+
+<!-- 
+    Tabla con los resultados.
+ -->
+<app-tabla-peliculas
+  [peliculas]="peliculas"
+  (onBorrar)="borrarPelicula($event)"
+></app-tabla-peliculas>

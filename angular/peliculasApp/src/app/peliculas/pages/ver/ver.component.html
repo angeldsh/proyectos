@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <h3>{{ pelicula.titulo || "Título no disponible" }}</h3>
+      <hr />
+      <p>
+        <strong>Director:</strong>
+        {{ pelicula.director || "Director no disponible" }}
+      </p>
+      <p><strong>Edad:</strong> {{ pelicula.edad || "Edad no disponible" }}</p>
+      <p>
+        <strong>Reparto:</strong>
+        {{ pelicula.reparto || "Reparto no disponible" }}
+      </p>
+      <p>
+        <strong>Fecha de estreno:</strong>
+        {{ pelicula.fechaEstreno || "Fecha de estreno no disponible" }}
+      </p>
+      <p>
+        <strong>Duración:</strong>
+        {{ pelicula.duracion || "Duración no disponible" }}
+      </p>
+      <p>
+        <strong>Género:</strong>
+        {{ pelicula.genero || "Género no disponible" }}
+      </p>
+      <p>
+        <strong>Sinopsis:</strong>
+        {{ pelicula.sinopsis || "Sinopsis no disponible" }}
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary mt-3" routerLink="/peliculas/listado">
+        Volver
+      </button>
+    </div>
+  </div>
+</div>

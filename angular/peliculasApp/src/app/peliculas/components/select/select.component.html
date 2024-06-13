@@ -1,0 +1,8 @@
+<!-- select.component.html -->
+
+<select (change)="seleccionarGenero($event)" class="form-select">
+  <option value="">Selecciona una opción</option>
+  <option *ngFor="let genero of generos" [value]="genero.nombre">
+    {{ genero.nombre }}
+  </option>
+</select>

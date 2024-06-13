@@ -1,0 +1,61 @@
+<ion-content scrollEvents="true" (ionScroll)="scrollHandler($event)">
+  <ion-list class="scroll-container sticky top-0 z-10 h-auto w-auto">
+    <div
+      *ngFor="let grupo of productosAgrupadosPorCategoria"
+      (click)="scrollToCategoria(grupo.categoria)"
+      [class.selected]="grupo.categoria == categoriaVisible"
+      class="mr-4 category-item cursor-pointer border border-amber-500 rounded bg-transparent h-full w-20 flex justify-center items-center"
+    >
+      <div class="text-center my-3">
+        {{ grupo.categoria }}
+      </div>
+    </div>
+  </ion-list>
+  <ng-container *ngFor="let grupo of productosAgrupadosPorCategoria">
+    <div [id]="grupo.categoria">
+      <ion-item-divider
+        class="h-16 flex items-center justify-center text-lg font-semibold border-t border-b border-gray-300 my-4"
+        color="light"
+        >{{ grupo.categoria }}</ion-item-divider
+      >
+
+      <ion-item
+        *ngFor="let producto of grupo.productos"
+        class="my-1 border-2 border-black dark:border-slate-50 m-2"
+      >
+        <ion-thumbnail slot="start" class="w-36 h-max">
+          <img
+            *ngIf="producto.imagen && producto.imagenCargada"
+            [src]="producto.imagen"
+            alt="Imagen de {{ producto.imagen }}"
+          />
+          <ion-spinner
+            *ngIf="!producto.imagenCargada"
+            name="lines"
+          ></ion-spinner>
+        </ion-thumbnail>
+        <ion-label>
+          <h2 class="">{{ producto.nombre }}</h2>
+          <p>{{ producto.precio }} €</p>
+        </ion-label>
+
+        <ion-button
+          color="danger"
+          size="small"
+          fill="clear"
+          (click)="quitarProducto(producto)"
+          class="p-0 text-lg"
+          >-</ion-button
+        >
+        <p class="m-0">{{ obtenerCantidadEnCarrito(producto) }}</p>
+        <ion-button
+          size="small"
+          fill="clear"
+          (click)="agregarProducto(producto)"
+          class="p-0 text-lg custom-button"
+          >+</ion-button
+        >
+      </ion-item>
+    </div>
+  </ng-container>
+</ion-content>

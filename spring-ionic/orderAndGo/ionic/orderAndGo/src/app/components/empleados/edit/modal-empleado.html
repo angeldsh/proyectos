@@ -1,0 +1,211 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title
+      >{{ empleado ? 'Editar empleado' : 'Agregar empleado' }}</ion-title
+    >
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <form [formGroup]="empleadoForm" (ngSubmit)="guardarCambios()">
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-text class="toggle-label" slot="start">Disponible</ion-text>
+            <ion-toggle formControlName="disponible" slot="end"></ion-toggle>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input
+              label="NIF"
+              labelPlacement="floating"
+              formControlName="nif"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="empleadoForm.get('nif')?.hasError('required') && empleadoForm.get('nif')?.touched"
+          >
+            NIF es obligatorio.
+          </ion-text>
+          <ion-text
+            color="danger"
+            *ngIf="empleadoForm.get('nif')?.hasError('nifInvalido') && empleadoForm.get('nif')?.touched"
+          >
+            NIF no es válido.
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input
+              label="Puesto"
+              labelPlacement="floating"
+              formControlName="puesto"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="empleadoForm.get('puesto')?.hasError('required') && empleadoForm.get('puesto')?.touched"
+          >
+            Puesto es obligatorio.
+          </ion-text>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input
+              label="Teléfono"
+              labelPlacement="floating"
+              formControlName="telefono"
+              type="tel"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="empleadoForm.get('telefono')?.hasError('required') && empleadoForm.get('telefono')?.touched"
+          >
+            Teléfono es obligatorio.
+          </ion-text>
+          <ion-text
+            color="danger"
+            *ngIf="empleadoForm.get('telefono')?.hasError('telefonoInvalido') && empleadoForm.get('telefono')?.touched"
+          >
+            Teléfono no es válido.
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input
+              label="Nombre"
+              labelPlacement="floating"
+              formControlName="nombre"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="empleadoForm.get('nombre')?.hasError('required') && empleadoForm.get('nombre')?.touched"
+          >
+            Nombre es obligatorio.
+          </ion-text>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input
+              label="Apellido"
+              labelPlacement="floating"
+              formControlName="apellidos"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="empleadoForm.get('apellidos')?.hasError('required') && empleadoForm.get('apellidos')?.touched"
+          >
+            Apellido es obligatorio.
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input
+              label="Nombre de usuario"
+              labelPlacement="floating"
+              formControlName="username"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="empleadoForm.get('username')?.hasError('required') && empleadoForm.get('username')?.touched"
+          >
+            Nombre de usuario es obligatorio.
+          </ion-text>
+          <ion-text
+            color="danger"
+            *ngIf="empleadoForm.get('username')?.hasError('usernameExiste') && empleadoForm.get('username')?.touched"
+          >
+            El nombre de usuario ya existe.
+          </ion-text>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-input
+              label="Contraseña"
+              labelPlacement="floating"
+              formControlName="password"
+              type="password"
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="empleadoForm.get('password')?.hasError('required') && empleadoForm.get('password')?.touched"
+          >
+            Contraseña es obligatoria.
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-input
+              label="Correo electrónico"
+              labelPlacement="floating"
+              formControlName="email"
+              type="email"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-text
+            color="danger"
+            *ngIf="empleadoForm.get('email')?.hasError('required') && empleadoForm.get('email')?.touched"
+          >
+            Correo electrónico es obligatorio.
+          </ion-text>
+          <ion-text
+            color="danger"
+            *ngIf="empleadoForm.get('email')?.hasError('email') && empleadoForm.get('email')?.touched"
+          >
+            Correo electrónico no es válido.
+          </ion-text>
+          <ion-text
+            color="danger"
+            *ngIf="empleadoForm.get('email')?.hasError('emailExiste') && empleadoForm.get('email')?.touched"
+          >
+            El correo electrónico ya existe.
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-button
+            type="submit"
+            expand="block"
+            [disabled]="empleadoForm.invalid"
+          >
+            {{ empleado ? 'Guardar cambios' : 'Agregar empleado' }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+</ion-content>
